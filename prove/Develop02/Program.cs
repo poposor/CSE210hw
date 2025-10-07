@@ -18,7 +18,9 @@ class Program
             Console.WriteLine("2. Display");
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("5. Edit Entry");
+            Console.WriteLine("6. Quit");
+            
             Console.Write("What would you like to do? ");
             choice = Convert.ToInt32(Console.ReadLine());
             if (choice == 1)
@@ -36,6 +38,10 @@ class Program
             else if (choice == 4)
             {
                 journal.Save();
+            }
+            else if (choice == 5)
+            {
+                journal.EditEntry();
             }
             else
             {
