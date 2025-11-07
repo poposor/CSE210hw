@@ -1,7 +1,25 @@
 class ReflectionActivity : Activity
 {
-    // int _timeSpent;
-    int _totalTime = 0;
+    private int _totalTime = 0;
+    private List<string> _prompts = new List<string>
+    {
+        "Think of a time when you stood up for someone else.",
+        "Think of a time when you did something really difficult.",
+        "Think of a time when you helped someone in need.",
+        "Think of a time when you did something truly selfless."
+    };
+    private List<string> _questions = new List<string>
+    {
+        "Why was this experience meaningful to you?",
+        "Have you ever done anything like this before?",
+        "How did you get started?",
+        "How did you feel when it was complete?",
+        "What made this time different than other times when you were not as successful?",
+        "What is your favorite thing about this experience?",
+        "What could you learn from this experience that applies to other situations?",
+        "What did you learn about yourself through this experience?",
+        "How can you keep this experience in mind in the future?"
+    };
     public ReflectionActivity(string startMsg, string endMsg, string type)
     : base(startMsg, endMsg, type)
     { }
@@ -9,29 +27,18 @@ class ReflectionActivity : Activity
     {
         StartMessage();
 
-        Console.WriteLine("This activity will help you relax by walking you through breathing in and out slowly.");
+        Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience.");
         Console.WriteLine("");
 
-        int t = 0;
-        while (t < length*1000)
-        {
-            Console.WriteLine("Breathe in");
-            Spinner(4000);
-            t += 2000;
-            Console.WriteLine("");
+        Console.WriteLine("Get ready...");
+        Spinner(3000);
 
-            if (t < length * 1000)
-            {
-                Console.WriteLine("Breathe out");
-                Spinner(4000);
-                t += 2000;
-                Console.WriteLine("");
-            }
-        }
+        
+
 
         EndMessage();
-        _totalTime += t/1000;
-        Console.WriteLine($"You spent {t / 1000} seconds on this activity");
+        Console.WriteLine($"You spent {length} seconds on this activity");
+        _totalTime += length;
         Console.WriteLine($"You have spent {_totalTime} seconds total on this activity");
     }
 }

@@ -1,7 +1,7 @@
 class BreathingActivity : Activity
 {
     // int _timeSpent;
-    int _totalTime = 0;
+    private int _totalTime = 0;
     public BreathingActivity(string startMsg, string endMsg, string type)
     : base(startMsg, endMsg, type)
     { }
