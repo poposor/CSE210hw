@@ -1,6 +1,5 @@
 class ReflectionActivity : Activity
 {
-    private int _totalTime = 0;
     private List<string> _prompts = new List<string>
     {
         "Think of a time when you stood up for someone else.",
@@ -23,8 +22,9 @@ class ReflectionActivity : Activity
     public ReflectionActivity(string startMsg, string endMsg, string type)
     : base(startMsg, endMsg, type)
     { }
-    public void StartActivity(int length)
+    public void StartActivity(int time)
     {
+        length = time;
         StartMessage();
 
         Console.WriteLine("This activity will help you reflect on times in your life when you have shown strength and resilience.");
@@ -33,12 +33,28 @@ class ReflectionActivity : Activity
         Console.WriteLine("Get ready...");
         Spinner(3000);
 
-        
+        Random rand = new Random();
+        int i = rand.Next(_prompts.Count);
 
+        Console.WriteLine(_prompts[i]);
+        Console.WriteLine("When you have something in mind, press enter to continue.");
+        Console.ReadLine();
 
-        EndMessage();
-        Console.WriteLine($"You spent {length} seconds on this activity");
+        Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
+        Console.WriteLine("You may begin in: ");
+        Countdown(5);
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(length);
+
+        while (DateTime.Now < endTime)
+        {
+            i = rand.Next(_questions.Count);
+            Console.WriteLine("> "+_questions[i]);
+            Spinner(5000);
+        }
+
         _totalTime += length;
-        Console.WriteLine($"You have spent {_totalTime} seconds total on this activity");
+        EndMessage();
+        Spinner(5000);
     }
 }

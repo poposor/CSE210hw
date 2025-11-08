@@ -1,12 +1,11 @@
 class BreathingActivity : Activity
 {
-    // int _timeSpent;
-    private int _totalTime = 0;
     public BreathingActivity(string startMsg, string endMsg, string type)
     : base(startMsg, endMsg, type)
     { }
-    public void StartActivity(int length)
+    public void StartActivity(int time)
     {
+        length = time;
         StartMessage();
 
         Console.WriteLine("This activity will help you relax by walking you through breathing in and out slowly.");
@@ -29,9 +28,8 @@ class BreathingActivity : Activity
             }
         }
 
+        _totalTime += length;
         EndMessage();
-        _totalTime += t/1000;
-        Console.WriteLine($"You spent {t / 1000} seconds on this activity");
-        Console.WriteLine($"You have spent {_totalTime} seconds total on this activity");
+        Spinner(5000);
     }
 }

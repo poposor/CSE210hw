@@ -1,3 +1,4 @@
+// I added counts to each activity to track the total time spent in each activity
 using System;
 
 class Program
@@ -6,7 +7,7 @@ class Program
     {
         BreathingActivity breathAct = new BreathingActivity("Welcome to the Breathing Activity", "Well Done!!", "breath");
         ReflectionActivity reflectAct = new ReflectionActivity("Welcome to the Reflecting Activity", "Well Done!!", "reflect");
-        // Activity ListAct = new ListingActivity("Welcome to the Listing Activity", "Well Done!!", "list");
+        ListingActivity listAct = new ListingActivity("Welcome to the Listing Activity", "Well Done!!", "list");
 
         bool quit = false;
         int choice;
@@ -37,12 +38,13 @@ class Program
             {
                 Console.Write("How long in seconds? ");
                 int len = Convert.ToInt32(Console.ReadLine());
-                // listAct.StartActivity(len);
+                listAct.StartActivity(len);
             }
             else
             {
                 quit = true;
             }
+            Console.Clear();
         }
     }
 }
