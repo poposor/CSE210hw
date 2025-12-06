@@ -7,10 +7,8 @@ class Program
     {
         Console.WriteLine("Hello World2!");
         Calender myCalendar = new Calender();
-        myCalendar.load("mycal.txt");
+        myCalendar.load("bigcal.txt");
 
-        await myCalendar.SyncExternalCal("https://byui.instructure.com/feeds/calendars/user_MsN9hQyH8YwVHMQaYZlbkVdNPZbBk7aAjhOKLGjy.ics");
 
-        Console.WriteLine(myCalendar.getItems());
     }
 }

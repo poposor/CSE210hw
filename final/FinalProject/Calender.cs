@@ -25,5 +25,10 @@ class Calender
     public async Task SyncExternalCal(string url){
         // await _sync.GetExternalCal(url);
         _items =_sync.AddExternalCal(_items);
+        foreach (CalendarItem item in getItems())
+        {
+            Console.WriteLine(item.getSaveable());
+        }
+        Console.WriteLine("got items");
     }
 }

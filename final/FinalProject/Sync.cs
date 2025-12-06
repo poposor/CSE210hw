@@ -30,11 +30,68 @@ class Sync
             return new List<CalendarItem>();
         }
         _externalCal = fileContents;
+
+        string[] splitLines = _externalCal.Split("\n");
+        _externalCal = string.Join("\n", splitLines.Skip(9).ToArray());
+
+        
         string[] events = _externalCal.Split("BEGIN:VEVENT");
+        string dateFormat = "yyyyMMddTHHmmssZ";
         foreach (string e in events)
         {
-            Console.WriteLine(e + "\n CHANGE IN EVENTS -------------------------------- \n");
-            
+            if (e.Contains("END:VCALENDAR")){}
+            else
+            {
+                string type = "reminder";
+                DateTime placeholderTime = DateTime.Now;
+                string name = "failed to get name";
+                string desc = "failed to get desc";
+                DateOnly date = DateOnly.FromDateTime(placeholderTime);
+                DateTime start = placeholderTime;
+                DateTime end = placeholderTime;
+                foreach (string line in e.Split("\n"))
+                {
+                    
+                    if (line.StartsWith("DESCRIPTION:"))
+                    {
+                        desc = line.Substring("DESCRIPTION:".Length).Trim();
+                    }
+                    else if (line.StartsWith("DTSTART;VALUE=DATE;VALUE=DATE:"))
+                    {
+                        type = "AllDay";
+                        string dateString = line.Substring("DTSTART;VALUE=DATE;VALUE=DATE:".Length).Trim();
+                        date = DateOnly.ParseExact(dateString, "yyyyMMdd", null);
+                    }
+                    else if (line.StartsWith("DTSTART:"))
+                    {
+                        string dateString = line.Substring("DTSTART:".Length).Trim();
+                        start = DateTime.ParseExact(dateString, dateFormat, null);
+                    }
+                    else if (line.StartsWith("DTEND:"))
+                    {
+                        type = "event";
+                        string dateString = line.Substring("DTEND:".Length).Trim();
+                        end = DateTime.ParseExact(dateString, dateFormat, null);
+                    }
+                    else if (line.StartsWith("SUMMARY:"))
+                    {
+                        name = line.Substring("SUMMARY:".Length).Trim();
+                    }
+                }
+                if (type == "AllDay")
+                {
+                    items.Add(new AllDay(name, desc, date));
+                }
+                else if (type == "event")
+                {
+                    items.Add(new Event(name, desc, start, end));
+                }
+                else
+                {
+                    items.Add(new Reminder(name, desc, start));
+                }
+                
+            }
         }
         return items;
     }
