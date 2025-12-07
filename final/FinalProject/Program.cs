@@ -1,14 +1,20 @@
 using System;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
-class Program
+static class Program
 {
-    static async Task Main(string[] args)
+    [STAThread]
+    static void Main()
     {
-        Console.WriteLine("Hello World2!");
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+
         Calender myCalendar = new Calender();
         myCalendar.load("bigcal.txt");
 
+        CalenderApp.Form1 app = new CalenderApp.Form1(myCalendar);
+        Application.Run(app);
 
+        
     }
 }

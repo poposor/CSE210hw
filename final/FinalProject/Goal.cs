@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 class Goal : CalendarItem
 {
     private bool _complete;
@@ -24,6 +27,10 @@ class Goal : CalendarItem
         details.Add(getDescription());
         details.Add(_complete.ToString());
         return details;
+    }
+    public override DateOnly getDate()
+    {
+        return new DateOnly(1932, 11, 2);
     }
     public override string getSaveable()
     {

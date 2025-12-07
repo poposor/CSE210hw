@@ -1,4 +1,6 @@
-abstract class CalendarItem
+using System;
+using System.Collections.Generic;
+public abstract class CalendarItem
 {
     private string _name;
     private string _description;
@@ -19,5 +21,6 @@ abstract class CalendarItem
     }
 
     public abstract List<string> getDetails();
+    public abstract DateOnly getDate();
     public abstract string getSaveable();
 }

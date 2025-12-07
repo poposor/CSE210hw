@@ -1,4 +1,8 @@
-class Calender 
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+public class Calender 
 {
     private List<CalendarItem> _items;
     private Sync _sync;
@@ -23,12 +27,11 @@ class Calender
         return _items;
     }
     public async Task SyncExternalCal(string url){
-        // await _sync.GetExternalCal(url);
+        await _sync.GetExternalCal(url);
         _items =_sync.AddExternalCal(_items);
-        foreach (CalendarItem item in getItems())
-        {
-            Console.WriteLine(item.getSaveable());
-        }
-        Console.WriteLine("got items");
+        // foreach (CalendarItem item in getItems())
+        // {
+        //     Console.WriteLine(item.getSaveable());
+        // }
     }
 }

@@ -1,3 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+
 class Sync
 {
     private string _externalCal;
@@ -56,11 +64,11 @@ class Sync
                     {
                         desc = line.Substring("DESCRIPTION:".Length).Trim();
                     }
-                    else if (line.StartsWith("DTSTART;VALUE=DATE;VALUE=DATE:"))
+                    else if (line.StartsWith("DTSTART;VALUE=DATE:"))
                     {
                         type = "AllDay";
-                        string dateString = line.Substring("DTSTART;VALUE=DATE;VALUE=DATE:".Length).Trim();
-                        date = DateOnly.ParseExact(dateString, "yyyyMMdd", null);
+                        string dateString = line.Substring("DTSTART;VALUE=DATE:".Length).Trim();
+                        date = DateOnly.ParseExact(dateString, "yyyyMMdd", CultureInfo.InvariantCulture);
                     }
                     else if (line.StartsWith("DTSTART:"))
                     {

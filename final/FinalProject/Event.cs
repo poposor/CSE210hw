@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 class Event : CalendarItem
 {
     private DateTime _startTime;
@@ -24,6 +27,10 @@ class Event : CalendarItem
         details.Add(_startTime.ToString());
         details.Add(_endTime.ToString());
         return details;
+    }
+    public override DateOnly getDate()
+    {
+        return DateOnly.FromDateTime(_startTime);
     }
     public override string getSaveable()
     {
