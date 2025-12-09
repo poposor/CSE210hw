@@ -26,18 +26,18 @@ class Sync
     }
     public List<CalendarItem> AddExternalCal(List<CalendarItem> items)
     {
-        string fileContents;
-        string _fileName = "externalCal.ics";
-        try
-        {
-            fileContents = File.ReadAllText(_fileName);
-        }
-        catch (FileNotFoundException)
-        {
-            Console.WriteLine($"Error: The file '{_fileName}' was not found.");
-            return new List<CalendarItem>();
-        }
-        _externalCal = fileContents;
+        // string fileContents;
+        // string _fileName = "externalCal.ics";
+        // try
+        // {
+        //     fileContents = File.ReadAllText(_fileName);
+        // }
+        // catch (FileNotFoundException)
+        // {
+        //     Console.WriteLine($"Error: The file '{_fileName}' was not found.");
+        //     return new List<CalendarItem>();
+        // }
+        // _externalCal = fileContents;
 
         string[] splitLines = _externalCal.Split("\n");
         _externalCal = string.Join("\n", splitLines.Skip(9).ToArray());

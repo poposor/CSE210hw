@@ -8,4 +8,8 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="images/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>
