@@ -1,13 +1,9 @@
 using System;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CalenderApp
-{
-    public partial class Form1 : Form
+    public class Form1 : Form
     {
         private Calender _cal;
         private Image saveImg;
@@ -198,6 +194,7 @@ namespace CalenderApp
                         }
                     }
                     delete = false;
+                    Invalidate();
                     return;
                 }
                 else if (e.X >= buttonsX && e.X <= buttonsX + 50)
@@ -207,7 +204,7 @@ namespace CalenderApp
                         InputForm saveForm = new InputForm("Save Calendar", "Filename:");
                         if (saveForm.ShowDialog() == DialogResult.OK)
                         {
-                            string filename = saveForm.InputValue;
+                            string filename = saveForm._inputValue;
                             _cal.save(filename);
                         }
                     }
@@ -216,7 +213,7 @@ namespace CalenderApp
                         InputForm loadForm = new InputForm("Load Calendar", "Filename:");
                         if (loadForm.ShowDialog() == DialogResult.OK)
                         {
-                            string filename = loadForm.InputValue;
+                            string filename = loadForm._inputValue;
                             _cal.load(filename);
                         }
                         Invalidate();
@@ -226,7 +223,7 @@ namespace CalenderApp
                         InputForm webForm = new InputForm("Get Web Calendar", "URL:");
                         if (webForm.ShowDialog() == DialogResult.OK)
                         {
-                            string filename = webForm.InputValue;
+                            string filename = webForm._inputValue;
                             Console.WriteLine(filename);
                             await _cal.SyncExternalCal(filename);
                             Console.WriteLine("Done");
@@ -272,4 +269,3 @@ namespace CalenderApp
             this.Name = "Form1";
         }
     }
-}

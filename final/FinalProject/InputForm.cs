@@ -1,12 +1,10 @@
-using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 public class InputForm : Form
 {
     private TextBox _textBox;
     private Button _ok;
-    public string InputValue => _textBox.Text;
+    public string _inputValue => _textBox.Text;
 
     public InputForm(string title, string prompt)
     {
