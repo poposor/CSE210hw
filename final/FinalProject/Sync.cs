@@ -64,12 +64,17 @@ class Sync
                     {
                         desc = line.Substring("DESCRIPTION:".Length).Trim();
                     }
-                    else if (line.StartsWith("DTSTART;VALUE=DATE:"))
+                    else if (line.StartsWith("DTSTART;VALUE=DATE;VALUE=DATE:"))
                     {
                         type = "AllDay";
-                        string dateString = line.Substring("DTSTART;VALUE=DATE:".Length).Trim();
+                        string dateString = line.Substring("DTSTART;VALUE=DATE;VALUE=DATE:".Length).Trim();
                         date = DateOnly.ParseExact(dateString, "yyyyMMdd", CultureInfo.InvariantCulture);
                     }
+                    // else if (line.StartsWith("DTSTART;VALUE=DATE;VALUE=DATE:"))
+                    // {
+                    //     string dateString = line.Substring("DTSTART;VALUE=DATE;VALUE=DATE:".Length).Trim();
+                    //     start = D.ParseExact(dateString, dateFormat, null);
+                    // }
                     else if (line.StartsWith("DTSTART:"))
                     {
                         string dateString = line.Substring("DTSTART:".Length).Trim();
@@ -85,6 +90,11 @@ class Sync
                     {
                         name = line.Substring("SUMMARY:".Length).Trim();
                     }
+                }
+                if (date == DateOnly.FromDateTime(placeholderTime) && (start == placeholderTime && end == placeholderTime))
+                {
+                    Console.WriteLine($"Failed to parse event: {type} {name} {desc} {date} {start} {end}");
+                    Console.WriteLine(e);
                 }
                 if (type == "AllDay")
                 {

@@ -8,24 +8,22 @@ public class InputForm : Form
     private Button _ok;
     public string InputValue => _textBox.Text;
 
-    public InputForm(string title = "Enter URL")
+    public InputForm(string title, string prompt)
     {
-        InitializeComponent(title);
+        InitializeComponent(title, prompt);
     }
 
-    private void InitializeComponent(string title)
+    private void InitializeComponent(string title, string prompt)
     {
         this.Text = title;
         this.Width = 400;
-        this.Height = 150;
+        this.Height = 180;
         this.StartPosition = FormStartPosition.CenterScreen;
         this.FormBorderStyle = FormBorderStyle.FixedDialog;
-        // this.MaximizeBox = false;
-        // this.MinimizeBox = false;
 
         Label label = new Label
         {
-            Text = "URL:",
+            Text = prompt,
             Left = 20,
             Top = 20,
             Width = 400,

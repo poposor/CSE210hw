@@ -13,6 +13,8 @@ namespace CalenderApp
         private Image saveImg;
         private Image folderImg;
         private Image webImg;
+        private Image newImg;
+        private Image deleteImg;
         public Form1(Calender cal)
         {
             _cal = cal;
@@ -22,17 +24,37 @@ namespace CalenderApp
             saveImg = Image.FromFile(Path.Combine(Application.StartupPath, "images", "save-2.png"));
             folderImg = Image.FromFile(Path.Combine(Application.StartupPath, "images", "folder-2.png"));
             webImg = Image.FromFile(Path.Combine(Application.StartupPath, "images", "web-2.png"));
+            newImg = Image.FromFile(Path.Combine(Application.StartupPath, "images", "new-2.png"));
+            deleteImg = Image.FromFile(Path.Combine(Application.StartupPath, "images", "delete-2.png"));
+            buttonsX = width - width / 20 + width / 40 - 25;
+            saveButtonRect = new Rectangle(buttonsX, height - 70-60-60, 50, 50);
+            loadButtonRect = new Rectangle(buttonsX, height - 70-60, 50, 50);
+            webButtonRect = new Rectangle(buttonsX, height - 70, 50, 50);
+            newButtonRect = new Rectangle(buttonsX, 60, 50, 50);
+            deleteButtonRect = new Rectangle(buttonsX, 120, 50, 50);
+
+            monday = DateOnly.FromDateTime(DateTime.Now).AddDays(-(int)DateOnly.FromDateTime(DateTime.Now).DayOfWeek + 1);
+            sunday = monday.AddDays(6);
         }
         Graphics g;
-        int x = 0;
+        int width = 1280;
+        int height = 720;
+        int buttonsX;
+        Rectangle saveButtonRect;
+        Rectangle loadButtonRect;
+        Rectangle webButtonRect;
+        Rectangle newButtonRect;
+        Rectangle deleteButtonRect;
+
+        DateOnly monday;
+        DateOnly sunday;
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
 
             g = e.Graphics;
             drawBackground(g);
-            DateOnly monday = DateOnly.FromDateTime(DateTime.Now).AddDays(-(int)DateOnly.FromDateTime(DateTime.Now).DayOfWeek + 1);
-            DateOnly sunday = monday.AddDays(6);
             foreach (CalendarItem item in _cal.getItems())
             {
                 if (item.getDate() >= monday && item.getDate() <= sunday)
@@ -41,16 +63,21 @@ namespace CalenderApp
                 }
             }
 
-            int buttonsX = width - width / 20 + width / 40 - 25;
-            rectangle(g, new Rectangle(buttonsX, 60, 50, 50), Color.LightGray);
-            g.DrawImage(saveImg, buttonsX+9, 69, 32, 32);
-            rectangle(g, new Rectangle(buttonsX, 120, 50, 50), Color.LightGray);
-            g.DrawImage(folderImg, buttonsX+9, 129, 32, 32);
-            rectangle(g, new Rectangle(buttonsX, 180, 50, 50), Color.LightGray);
-            g.DrawImage(webImg, buttonsX+9, 189, 32, 32);
+            rectangle(g, newButtonRect, Color.LightGray);
+            g.DrawImage(newImg, newButtonRect.X+9, newButtonRect.Y+9, 32, 32);
+            
+            Color deleteColor = delete ? Color.DarkGray : Color.LightGray;
+            rectangle(g, deleteButtonRect, deleteColor);
+            g.DrawImage(deleteImg, deleteButtonRect.X+9, deleteButtonRect.Y+9, 32, 32);
+
+            rectangle(g, saveButtonRect, Color.LightGray);
+            g.DrawImage(saveImg, saveButtonRect.X+9, saveButtonRect.Y+9, 32, 32);
+            rectangle(g, loadButtonRect, Color.LightGray);
+            g.DrawImage(folderImg, loadButtonRect.X+9, loadButtonRect.Y+9, 32, 32);
+            rectangle(g, webButtonRect, Color.LightGray);
+            g.DrawImage(webImg, webButtonRect.X+9, webButtonRect.Y+9, 32, 32);
         }
-        int width = 1280;
-        int height = 720;
+        
         private void rectangle(Graphics g, Rectangle rect, Color color)
         {
             using (SolidBrush brush = new SolidBrush(color))
@@ -117,7 +144,6 @@ namespace CalenderApp
                 y = height - height / 30;
                 h = height / 30;
             }
-            //  Console.WriteLine($"Name: {item.getName()}, x: {x}, y: {y}, h: {h}, Type: {type}");
             return new Rectangle(x+1, y, (width - width/10) / 7-1, h);
         }
         public void drawCalendarItem(CalendarItem item)
@@ -148,40 +174,94 @@ namespace CalenderApp
             }
             
         }
+        bool delete = false;
         private async void Form1_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                int buttonsX = width - width / 20 + width / 40 - 25;
-                if (e.X >= buttonsX && e.X <= buttonsX + 50)
+                if (delete)
                 {
-                    if (e.Y >= 60 && e.Y <= 110)
+                    foreach (CalendarItem item in _cal.getItems())
                     {
-                        InputForm saveForm = new InputForm("Save Calendar");
+                        if (item.getDate() >= monday && item.getDate() <= sunday)
+                        {
+                            string type = item.getSaveable()[0].ToString();
+                            Rectangle pos = getCalendarItemRect(item, type);
+                            if (e.X >= pos.X && e.X <= pos.X + pos.Width &&
+                                e.Y >= pos.Y && e.Y <= pos.Y + pos.Height)
+                            {
+                                Console.WriteLine(item.getName()+" deleted");
+                                _cal.deleteItem(item);
+                                Invalidate();
+                                break;
+                            }
+                        }
+                    }
+                    delete = false;
+                    return;
+                }
+                else if (e.X >= buttonsX && e.X <= buttonsX + 50)
+                {
+                    if (e.Y >= saveButtonRect.Y && e.Y <= saveButtonRect.Y + 50)
+                    {
+                        InputForm saveForm = new InputForm("Save Calendar", "Filename:");
                         if (saveForm.ShowDialog() == DialogResult.OK)
                         {
                             string filename = saveForm.InputValue;
                             _cal.save(filename);
                         }
                     }
-                    else if (e.Y >= 120 && e.Y <= 170)
+                    else if (e.Y >= loadButtonRect.Y && e.Y <= loadButtonRect.Y + 50)
                     {
-                        InputForm saveForm = new InputForm("Save Calendar");
-                        if (saveForm.ShowDialog() == DialogResult.OK)
+                        InputForm loadForm = new InputForm("Load Calendar", "Filename:");
+                        if (loadForm.ShowDialog() == DialogResult.OK)
                         {
-                            string filename = saveForm.InputValue;
+                            string filename = loadForm.InputValue;
                             _cal.load(filename);
                         }
                         Invalidate();
                     }
-                    else if (e.Y >= 180 && e.Y <= 230)
+                    else if (e.Y >= webButtonRect.Y && e.Y <= webButtonRect.Y + 50)
                     {
-                        InputForm saveForm = new InputForm("Save Calendar");
-                        if (saveForm.ShowDialog() == DialogResult.OK)
+                        InputForm webForm = new InputForm("Get Web Calendar", "URL:");
+                        if (webForm.ShowDialog() == DialogResult.OK)
                         {
-                            string filename = saveForm.InputValue;
+                            string filename = webForm.InputValue;
+                            Console.WriteLine(filename);
                             await _cal.SyncExternalCal(filename);
+                            Console.WriteLine("Done");
+                            Invalidate();
                         }
+                    }
+                    else if (e.Y >= newButtonRect.Y && e.Y <= newButtonRect.Y + 50)
+                    {
+                        newForm i = new newForm();
+                        if (i.ShowDialog() == DialogResult.OK)
+                        {
+                            // CalendarItem newItem = newItemForm.GetCalendarItem();
+                            // _cal.addItem(newItem);
+                            // Invalidate();
+                            CalendarItem newItem;
+                            string[] types = {"E", "R", "A"};
+                            if (i.TypeIndex == 0){
+                                Console.WriteLine($"{types[i.TypeIndex]}|{i.InputValue}|{i.Description}|{i.InputDate}|{i.EndDate}");
+                                newItem = new Event(i.InputValue, i.Description, i.InputDate, i.EndDate);
+
+                            } else if (i.TypeIndex == 1){
+                                Console.WriteLine($"{types[i.TypeIndex]}|{i.InputValue}|{i.Description}|{i.InputDate}");
+                                newItem = new Reminder(i.InputValue, i.Description, i.InputDate);
+                            } else {
+                                Console.WriteLine($"{types[i.TypeIndex]}|{i.InputValue}|{i.Description}|{i.InputDate}");
+                                newItem = new AllDay(i.InputValue, i.Description, DateOnly.FromDateTime(i.InputDate));
+                            }
+                            _cal.addItem(newItem);
+                        }
+                        Invalidate();
+                    }
+                    else if (e.Y >= deleteButtonRect.Y && e.Y <= deleteButtonRect.Y + 50)
+                    {
+                        delete = true;
+                        Invalidate();
                     }
                 }
             }

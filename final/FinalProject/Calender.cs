@@ -26,6 +26,14 @@ public class Calender
     {
         return _items;
     }
+    public void addItem(CalendarItem item)
+    {
+        _items.Add(item);
+    }
+    public void deleteItem(CalendarItem item)
+    {
+        _items.Remove(item);
+    }
     public async Task SyncExternalCal(string url){
         await _sync.GetExternalCal(url);
         _items =_sync.AddExternalCal(_items);
