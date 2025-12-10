@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -26,19 +25,6 @@ class Sync
     }
     public List<CalendarItem> AddExternalCal(List<CalendarItem> items)
     {
-        // string fileContents;
-        // string _fileName = "externalCal.ics";
-        // try
-        // {
-        //     fileContents = File.ReadAllText(_fileName);
-        // }
-        // catch (FileNotFoundException)
-        // {
-        //     Console.WriteLine($"Error: The file '{_fileName}' was not found.");
-        //     return new List<CalendarItem>();
-        // }
-        // _externalCal = fileContents;
-
         string[] splitLines = _externalCal.Split("\n");
         _externalCal = string.Join("\n", splitLines.Skip(9).ToArray());
 
@@ -70,11 +56,6 @@ class Sync
                         string dateString = line.Substring("DTSTART;VALUE=DATE;VALUE=DATE:".Length).Trim();
                         date = DateOnly.ParseExact(dateString, "yyyyMMdd", CultureInfo.InvariantCulture);
                     }
-                    // else if (line.StartsWith("DTSTART;VALUE=DATE;VALUE=DATE:"))
-                    // {
-                    //     string dateString = line.Substring("DTSTART;VALUE=DATE;VALUE=DATE:".Length).Trim();
-                    //     start = D.ParseExact(dateString, dateFormat, null);
-                    // }
                     else if (line.StartsWith("DTSTART:"))
                     {
                         string dateString = line.Substring("DTSTART:".Length).Trim();

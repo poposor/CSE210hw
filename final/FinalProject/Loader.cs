@@ -39,7 +39,7 @@ class Loader
         }
         catch (FileNotFoundException)
         {
-            Console.WriteLine($"Error: The file '{_fileName}' was not found.");
+            Console.WriteLine($"Error: '{_fileName}' was not found.");
             return new List<CalendarItem>();
         }
     }

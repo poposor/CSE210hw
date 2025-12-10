@@ -4,15 +4,30 @@ using System.Windows.Forms;
 public class newForm : Form
 {
     private TextBox _nameBox;
-    public string InputValue => _nameBox.Text;
+    public string getName()
+    {
+        return _nameBox.Text;
+    }
     private ComboBox _typeDropdown;
-    public int TypeIndex => _typeDropdown.SelectedIndex;
+    public int getType()
+    {
+        return _typeDropdown.SelectedIndex;
+    }
     private DateTimePicker _datePicker;
-    public DateTime InputDate => _datePicker.Value;
+    public DateTime getDate()
+    {
+        return _datePicker.Value;
+    }
     private DateTimePicker _endDatePicker;
-    public DateTime EndDate => _endDatePicker.Value;
+    public DateTime getEndDate()
+    {
+        return _endDatePicker.Value;
+    }
     private TextBox _descriptionBox;
-    public string Description => _descriptionBox.Text;
+    public string getDesc()
+    {
+        return _descriptionBox.Text;
+    }
     private Button _ok;
     
 
@@ -138,7 +153,7 @@ public class newForm : Form
         this.Controls.Add(new Label
         {
             Text = "Description:",
-            Left = 250,
+            Left = 20,
             Top = 195,
             Width = 200,
             Height = 25
@@ -146,7 +161,7 @@ public class newForm : Form
 
         _descriptionBox = new TextBox
         {
-            Left = 250,
+            Left = 20,
             Top = 220,
             Width = 300,
             Height = 25,

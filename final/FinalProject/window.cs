@@ -204,7 +204,7 @@ using System.Windows.Forms;
                         InputForm saveForm = new InputForm("Save Calendar", "Filename:");
                         if (saveForm.ShowDialog() == DialogResult.OK)
                         {
-                            string filename = saveForm._inputValue;
+                            string filename = saveForm.getInput();
                             _cal.save(filename);
                         }
                     }
@@ -213,7 +213,7 @@ using System.Windows.Forms;
                         InputForm loadForm = new InputForm("Load Calendar", "Filename:");
                         if (loadForm.ShowDialog() == DialogResult.OK)
                         {
-                            string filename = loadForm._inputValue;
+                            string filename = loadForm.getInput();
                             _cal.load(filename);
                         }
                         Invalidate();
@@ -223,7 +223,7 @@ using System.Windows.Forms;
                         InputForm webForm = new InputForm("Get Web Calendar", "URL:");
                         if (webForm.ShowDialog() == DialogResult.OK)
                         {
-                            string filename = webForm._inputValue;
+                            string filename = webForm.getInput();
                             Console.WriteLine(filename);
                             await _cal.SyncExternalCal(filename);
                             Console.WriteLine("Done");
@@ -235,21 +235,18 @@ using System.Windows.Forms;
                         newForm i = new newForm();
                         if (i.ShowDialog() == DialogResult.OK)
                         {
-                            // CalendarItem newItem = newItemForm.GetCalendarItem();
-                            // _cal.addItem(newItem);
-                            // Invalidate();
                             CalendarItem newItem;
                             string[] types = {"E", "R", "A"};
-                            if (i.TypeIndex == 0){
-                                Console.WriteLine($"{types[i.TypeIndex]}|{i.InputValue}|{i.Description}|{i.InputDate}|{i.EndDate}");
-                                newItem = new Event(i.InputValue, i.Description, i.InputDate, i.EndDate);
+                            if (i.getType() == 0){
+                                Console.WriteLine($"{types[i.getType()]}|{i.getName()}|{i.getDesc()}|{i.getDate()}|{i.getEndDate()}");
+                                newItem = new Event(i.getName(), i.getDesc(), i.getDate(), i.getEndDate());
 
-                            } else if (i.TypeIndex == 1){
-                                Console.WriteLine($"{types[i.TypeIndex]}|{i.InputValue}|{i.Description}|{i.InputDate}");
-                                newItem = new Reminder(i.InputValue, i.Description, i.InputDate);
+                            } else if (i.getType() == 1){
+                                Console.WriteLine($"{types[i.getType()]}|{i.getName()}|{i.getDesc()}|{i.getDate()}");
+                                newItem = new Reminder(i.getName(), i.getDesc(), i.getDate());
                             } else {
-                                Console.WriteLine($"{types[i.TypeIndex]}|{i.InputValue}|{i.Description}|{i.InputDate}");
-                                newItem = new AllDay(i.InputValue, i.Description, DateOnly.FromDateTime(i.InputDate));
+                                Console.WriteLine($"{types[i.getType()]}|{i.getName()}|{i.getDesc()}|{i.getDate()}");
+                                newItem = new AllDay(i.getName(), i.getDesc(), DateOnly.FromDateTime(i.getDate()));
                             }
                             _cal.addItem(newItem);
                         }

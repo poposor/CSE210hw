@@ -3,8 +3,12 @@ using System.Windows.Forms;
 public class InputForm : Form
 {
     private TextBox _textBox;
+    public string getInput()
+    {
+        return _textBox.Text;
+    }
     private Button _ok;
-    public string _inputValue => _textBox.Text;
+    
 
     public InputForm(string title, string prompt)
     {

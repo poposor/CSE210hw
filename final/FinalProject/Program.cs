@@ -1,3 +1,11 @@
+// This project is a simple weekly calender
+// Features:
+// Create new event
+// Delete event (Click the delete button and then click the event you wish to delete)
+// Load txt into the calender
+// Save calender into txt
+// Get calender from canvas (On the canvas calender page in the bottom right corner there is a link titiled "Calendar Feed" clicking it will show you a link you can copy into the program)
+
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
