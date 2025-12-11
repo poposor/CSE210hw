@@ -19,21 +19,21 @@ class Event : CalendarItem
     {
         return _endTime;
     }
-    public override List<string> getDetails()
+    public override List<string> GetDetails()
     {
         List<string> details = new List<string>();
-        details.Add(getName());
-        details.Add(getDescription());
+        details.Add(GetName());
+        details.Add(GetDescription());
         details.Add(_startTime.ToString());
         details.Add(_endTime.ToString());
         return details;
     }
-    public override DateOnly getDate()
+    public override DateOnly GetDate()
     {
         return DateOnly.FromDateTime(_startTime);
     }
-    public override string getSaveable()
+    public override string GetSaveable()
     {
-        return $"E|{getName()}|{getDescription()}|{_startTime}|{_endTime}";
+        return $"E|{GetName()}|{GetDescription()}|{_startTime}|{_endTime}";
     }
 }

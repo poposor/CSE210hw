@@ -1,0 +1,53 @@
+E|Pre-Class Preparation Assignment (Day 25) (Section 35) [REL 200C]|To best prepare for class\, you are expected to spend 1 hour s|12/8/2025 1:45:00 PM|12/8/2025 1:45:00 PM
+E|Pre-Class Preparation Time & Effort (Day 25) (Section 35) [REL 200C|failed to get desc|12/8/2025 1:45:00 PM|12/8/2025 1:45:00 PM
+E|UAS/Drone Society [CSE Majors]|failed to get desc|12/9/2025 4:30:00 PM|12/9/2025 5:30:00 PM
+E|IEEE Society [CSE Majors]|failed to get desc|12/9/2025 5:30:00 PM|12/9/2025 6:30:00 PM
+E|Formula Hybrid Electric Team [CSE Majors]|failed to get desc|12/9/2025 6:00:00 PM|12/9/2025 7:00:00 PM
+A|Post-Class Attendance & Engagement (Day 25) [REL 200C]|failed to get desc|12/9/2025
+A|U04 Prove: Team Presentation [CSE 170]|Your final team assignment is a presentation for the class on y|12/9/2025
+E|Ugly Christmas Sweater Day [CSE Majors]|[] (https://byui.instructure.com/courses/48558/files/157221282/|12/10/2025 8:00:00 AM|12/10/2025 5:00:00 PM
+E|Pre-Class Preparation Assignment (Day 26) (Section 35) [REL 200C]|To best prepare for class\, you are expected to spend 1 hour s|12/10/2025 1:45:00 PM|12/10/2025 1:45:00 PM
+E|Pre-Class Preparation Time & Effort (Day 26) (Section 35) [REL 200C|failed to get desc|12/10/2025 1:45:00 PM|12/10/2025 1:45:00 PM
+E|Computing Society [CSE Majors]|failed to get desc|12/10/2025 5:00:00 PM|12/10/2025 5:30:00 PM
+E|Video Game Design Team [CSE Majors]|failed to get desc|12/10/2025 5:30:00 PM|12/10/2025 6:30:00 PM
+A|W13 - Final Exam - Part 1 - Coding [ITM 111]|For this part of the final exam\, use MySQL Workbench to write|12/10/2025
+A|U04 Sprint 2: Stand-up Week 2 [CSE 170]|--------\nOverview\n--------\n\n* Purpose: The purpose of this|12/10/2025
+E|CSE Department Forum with SEL [CSE Majors]|[] (https://byui.instructure.com/courses/48558/files/157372514/|12/11/2025 11:30:00 AM|12/11/2025 12:30:00 PM
+E|SEL Info Session [CSE Majors]|[] (https://byui.instructure.com/courses/48558/files/157372638/|12/11/2025 4:30:00 PM|12/11/2025 5:30:00 PM
+E|Cloud Solutions Team [CSE Majors]|failed to get desc|12/11/2025 5:00:00 PM|12/11/2025 6:00:00 PM
+E|AI Society [CSE Majors]|failed to get desc|12/11/2025 5:30:00 PM|12/11/2025 6:30:00 PM
+E|Linux and Open Source Team [CSE Majors]|failed to get desc|12/11/2025 5:30:00 PM|12/11/2025 6:30:00 PM
+E|Formula Hybrid Electric Team [CSE Majors]|failed to get desc|12/11/2025 6:00:00 PM|12/11/2025 7:00:00 PM
+A|Post-Class Attendance & Engagement (Day 26) [REL 200C]|failed to get desc|12/11/2025
+E|CSE Juniors & Seniors Pizza Party [CSE Majors]|[] (https://byui.instructure.com/courses/48558/files/156504928/|12/12/2025 11:30:00 AM|12/12/2025 12:30:00 PM
+E|Video Game Design Team [CSE Majors]|failed to get desc|12/12/2025 5:30:00 PM|12/12/2025 6:30:00 PM
+A|W12 Weekly Check-In  [BYUI 101]|[courseBanner-1.jpg] (https://byui.instructure.com/courses/3508|12/12/2025
+A|Client/Developer Team Project - Report [WDD 130]|[Open page in browser] (https://alveyworld.github.io/wdd130/act|12/13/2025
+A|Extra Database Project [ITM 111]|If you want some more points toward your final grade\, complete|12/13/2025
+A|W13 Assignment: Take Action: Looking Back to Move Forward [BYUI 101|1 min read\n\n[] (https://byui.instructure.com/courses/35089|12/13/2025
+A|W13 Prove: Developer: Final Project [CSE 210]|--------\nOverview\n--------\n\n* Purpose: Demonstrate your ab|12/13/2025
+A|W13 Take Action Assignment: Reflection [BYUI 101]|------------------------------------\nBYUI 101 W13 Take Action|12/13/2025
+A|W13 Team Activity: Final Project Demo [CSE 210]|--------\nOverview\n--------\n\n* Purpose: Meet with your team|12/13/2025
+A|Employability Assignment [CSE 170]|Please do the following:\n\n* Visit the [CSE Majors] (https://|12/15/2025
+A|U04 Prepare: Attendance/Participation [CSE 170]|This is your participation assignment for Unit 4. No submission|12/15/2025
+A|U04: Final Self Retrospective [CSE 170]|failed to get desc|12/15/2025
+A|W13 - Final Exam - Part 2 - Multiple Choice [ITM 111]||12/15/2025
+A|BONUS - End of Course Evaluation [CSE 170]|If you complete the university end of semester evaluation\, you|12/15/2025
+A|W07 Quiz: Preparation [BYUI 101]||12/15/2025
+A|W14 BYUI 101 First-Semester Post-Survey [BYUI 101]|failed to get desc|12/16/2025
+A|Conversation with Bro. Bennett [REL 200C]|In the parables of lost things (sheep\, coin\, and son\; Luke 1|12/16/2025
+A|Devotional: Sister Stephanie Colvin (9/30) [REL 200C]|In order to receive extra credit\, please do the following: \n|12/16/2025
+A|Final Project Demo Video [ECEN 106]|Click [here] (https://content.byui.edu/file/6fce7410-fa48-4b8b-|12/16/2025
+A|Final Project Report [ECEN 106]|Click [here] (https://content.byui.edu/file/6fce7410-fa48-4b8b-|12/16/2025
+A|President Nelson's Funeral (10/7) [REL 200C]|In order to receive extra credit\, please do the following: \n|12/16/2025
+A|Promote the Family Final Project [REL 200C]|Promote the Family Final Project:\n\nFor the past 7 weeks you w|12/16/2025
+A|W01 Preparing for a Successful Semester: Syllabus Quiz [BYUI 101]|[courseBanner-1.jpg] (https://byui.instructure.com/courses/3508|12/16/2025
+E|End of Course Assessment [REL 200C]|Note: The university combined the "Cornerstone Course Assessmen|12/17/2025 5:00:00 PM|12/17/2025 5:00:00 PM
+E|End-of-Course Evaluation [BYUI 101]|Complete the End-of-Course Evaluation|12/17/2025 5:00:00 PM|12/17/2025 5:00:00 PM
+E|Extra Credit (Course Evaluation) [REL 200C]|failed to get desc|12/17/2025 5:00:00 PM|12/17/2025 5:00:00 PM
+A|Course Evaluation (Required) [ECEN 106]|Step 1: Before the semester ends\, please complete the Course E|12/17/2025
+A|Employability for 100-level courses [WDD 130]|For this course\, each student should be at Level 1 by the end|12/17/2025
+A|W13 End-of-Course Evaluation [CSE 210]|Select the button below to launch the survey in a new tab. If y|12/17/2025
+A|W14 Prove: Articulate [CSE 210]|--------\nOverview\n--------\n\n* Purpose: Demonstrate your ab|12/17/2025
+E|CSE Graduate Reception [CSE Majors]|[] (https://byui.instructure.com/courses/48558/files/156505070/|12/18/2025 3:00:00 PM|12/18/2025 4:00:00 PM
+E|CSE Department Freshmen Social [CSE Majors]|failed to get desc|1/14/2026 4:30:00 PM|1/14/2026 5:30:00 PM

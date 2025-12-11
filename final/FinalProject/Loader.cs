@@ -5,7 +5,7 @@ class Loader
 {
     private string _fileName;
 
-    public List<CalendarItem> load(string url)
+    public List<CalendarItem> Load(string url)
 
     {
         _fileName = url;
@@ -22,20 +22,20 @@ class Loader
                 {
                     items.Add(new AllDay(parts[1], parts[2], DateOnly.Parse(parts[3])));
                 }
-                else if(parts[0] == "R"){
+                else if (parts[0] == "R")
+                {
                     items.Add(new Reminder(parts[1], parts[2], DateTime.Parse(parts[3])));
                 }
-                else if(parts[0] == "E")
+                else if (parts[0] == "E")
                 {
                     items.Add(new Event(parts[1], parts[2], DateTime.Parse(parts[3]), DateTime.Parse(parts[4])));
                 }
-                else if(parts[0] == "G")
+                else if (parts[0] == "G")
                 {
                     items.Add(new Goal(parts[1], parts[2], bool.Parse(parts[3])));
                 }
             }
             return items;
-            // Console.WriteLine(fileContents);
         }
         catch (FileNotFoundException)
         {
@@ -43,13 +43,13 @@ class Loader
             return new List<CalendarItem>();
         }
     }
-    public void save(string url, List<CalendarItem> items)
+    public void Save(string url, List<CalendarItem> items)
     {
         _fileName = url;
         List<string> lines = new List<string>();
         foreach (CalendarItem item in items)
         {
-            lines.Add(item.getSaveable());
+            lines.Add(item.GetSaveable());
         }
         File.WriteAllLines(_fileName, lines);
     }

@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public class Calender 
+public class Calender
 {
     private List<CalendarItem> _items;
     private Sync _sync;
@@ -14,28 +13,29 @@ public class Calender
         _sync = new Sync();
         _loader = new Loader();
     }
-    public void load(string url)
+    public void Load(string url)
     {
-        _items = _loader.load(url);
+        _items = _loader.Load(url);
     }
-    public void save(string url)
+    public void Save(string url)
     {
-        _loader.save(url, _items);
+        _loader.Save(url, _items);
     }
-    public List<CalendarItem> getItems()
+    public List<CalendarItem> GetItems()
     {
         return _items;
     }
-    public void addItem(CalendarItem item)
+    public void AddItem(CalendarItem item)
     {
         _items.Add(item);
     }
-    public void deleteItem(CalendarItem item)
+    public void DeleteItem(CalendarItem item)
     {
         _items.Remove(item);
     }
-    public async Task SyncExternalCal(string url){
+    public async Task SyncExternalCal(string url)
+    {
         await _sync.GetExternalCal(url);
-        _items =_sync.AddExternalCal(_items);
+        _items = _sync.AddExternalCal(_items);
     }
 }

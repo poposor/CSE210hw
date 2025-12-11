@@ -11,16 +11,16 @@ public abstract class CalendarItem
         _description = desc;
     }
 
-    public string getName()
+    public string GetName()
     {
         return _name;
     }
-    public string getDescription()
+    public string GetDescription()
     {
         return _description;
     }
 
-    public abstract List<string> getDetails();
-    public abstract DateOnly getDate();
-    public abstract string getSaveable();
+    public abstract List<string> GetDetails();
+    public abstract DateOnly GetDate();
+    public abstract string GetSaveable();
 }

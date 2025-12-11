@@ -8,20 +8,20 @@ class AllDay : CalendarItem
     {
         _date = date;
     }
-    public override DateOnly getDate()
+    public override DateOnly GetDate()
     {
         return _date;
     }
-    public override List<string> getDetails()
+    public override List<string> GetDetails()
     {
         List<string> details = new List<string>();
-        details.Add(getName());
-        details.Add(getDescription());
+        details.Add(GetName());
+        details.Add(GetDescription());
         details.Add(_date.ToString());
         return details;
     }
-    public override string getSaveable()
+    public override string GetSaveable()
     {
-        return $"A|{getName()}|{getDescription()}|{_date}";
+        return $"A|{GetName()}|{GetDescription()}|{_date}";
     }
 }

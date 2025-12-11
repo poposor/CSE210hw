@@ -1,37 +1,37 @@
 using System;
 using System.Windows.Forms;
 
-public class newForm : Form
+public class NewForm : Form
 {
     private TextBox _nameBox;
-    public string getName()
+    public string GetName()
     {
         return _nameBox.Text;
     }
     private ComboBox _typeDropdown;
-    public int getType()
+    public int GetSelectedType()
     {
         return _typeDropdown.SelectedIndex;
     }
     private DateTimePicker _datePicker;
-    public DateTime getDate()
+    public DateTime GetDate()
     {
         return _datePicker.Value;
     }
     private DateTimePicker _endDatePicker;
-    public DateTime getEndDate()
+    public DateTime GetEndDate()
     {
         return _endDatePicker.Value;
     }
     private TextBox _descriptionBox;
-    public string getDesc()
+    public string GetDesc()
     {
         return _descriptionBox.Text;
     }
     private Button _ok;
-    
 
-    public newForm()
+
+    public NewForm()
     {
         InitializeComponent();
     }
@@ -73,7 +73,7 @@ public class newForm : Form
         });
         _typeDropdown = new ComboBox
         {
-            Items = {"Event", "Reminder", "AllDay"},
+            Items = { "Event", "Reminder", "AllDay" },
             Top = 115,
             Left = 20,
             SelectedIndex = 0,
@@ -140,7 +140,7 @@ public class newForm : Form
                 this.Controls.Add(_datePicker);
             }
         };
-        
+
         this.Controls.Add(new Label
         {
             Text = "Date/Time:",

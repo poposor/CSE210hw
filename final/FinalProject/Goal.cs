@@ -12,7 +12,7 @@ class Goal : CalendarItem
     {
         _complete = complete;
     }
-    public bool isComplete()
+    public bool IsComplete()
     {
         return _complete;
     }
@@ -20,20 +20,20 @@ class Goal : CalendarItem
     {
         _complete = true;
     }
-    public override List<string> getDetails()
+    public override List<string> GetDetails()
     {
         List<string> details = new List<string>();
-        details.Add(getName());
-        details.Add(getDescription());
+        details.Add(GetName());
+        details.Add(GetDescription());
         details.Add(_complete.ToString());
         return details;
     }
-    public override DateOnly getDate()
+    public override DateOnly GetDate()
     {
         return new DateOnly(1932, 11, 2);
     }
-    public override string getSaveable()
+    public override string GetSaveable()
     {
-        return $"G|{getName()}|{getDescription()}|{_complete}";
+        return $"G|{GetName()}|{GetDescription()}|{_complete}";
     }
 }

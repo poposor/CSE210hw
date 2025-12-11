@@ -28,12 +28,11 @@ class Sync
         string[] splitLines = _externalCal.Split("\n");
         _externalCal = string.Join("\n", splitLines.Skip(9).ToArray());
 
-        
         string[] events = _externalCal.Split("BEGIN:VEVENT");
         string dateFormat = "yyyyMMddTHHmmssZ";
         foreach (string e in events)
         {
-            if (e.Contains("END:VCALENDAR")){}
+            if (e.Contains("END:VCALENDAR")) { }
             else
             {
                 string type = "reminder";
@@ -45,7 +44,7 @@ class Sync
                 DateTime end = placeholderTime;
                 foreach (string line in e.Split("\n"))
                 {
-                    
+
                     if (line.StartsWith("DESCRIPTION:"))
                     {
                         desc = line.Substring("DESCRIPTION:".Length).Trim();
@@ -89,7 +88,7 @@ class Sync
                 {
                     items.Add(new Reminder(name, desc, start));
                 }
-                
+
             }
         }
         return items;

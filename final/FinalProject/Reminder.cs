@@ -12,20 +12,20 @@ public class Reminder : CalendarItem
     {
         return _time;
     }
-    public override List<string> getDetails()
+    public override List<string> GetDetails()
     {
         List<string> details = new List<string>();
-        details.Add(getName());
-        details.Add(getDescription());
+        details.Add(GetName());
+        details.Add(GetDescription());
         details.Add(_time.ToString());
         return details;
     }
-    public override DateOnly getDate()
+    public override DateOnly GetDate()
     {
         return DateOnly.FromDateTime(_time);
     }
-    public override string getSaveable()
+    public override string GetSaveable()
     {
-        return $"R|{getName()}|{getDescription()}|{_time}";
+        return $"R|{GetName()}|{GetDescription()}|{_time}";
     }
 }

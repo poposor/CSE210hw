@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Update="images/**" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="./canvas.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
